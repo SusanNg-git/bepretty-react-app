@@ -86,7 +86,7 @@ export default function SearchScreen(props) {
         </div>
       </div>
       <div className="row m-auto w-100">
-        <div className="col-2">
+        <div className="col-sm-2 search-panel">
           <h2>Category</h2>
           <div>
             {loadingCategories ? (
@@ -95,7 +95,7 @@ export default function SearchScreen(props) {
               <MessageBox variant="danger">{errorCategories}</MessageBox>
             ) : (
               <ul>
-                <li>
+                <li className={"all" === category ? "active" : ""}>
                   <Link
                     className={"all" === category ? "active" : ""}
                     to={getFilterUrl({ category: "all" })}
@@ -104,7 +104,7 @@ export default function SearchScreen(props) {
                   </Link>
                 </li>
                 {categories.sort().map((c) => (
-                  <li key={c}>
+                  <li key={c} className={c === category ? "active" : ""}>
                     <Link
                       className={c === category ? "active" : ""}
                       to={getFilterUrl({ category: c })}
@@ -120,7 +120,12 @@ export default function SearchScreen(props) {
             <h2>Price</h2>
             <ul>
               {prices.map((p) => (
-                <li key={p.name}>
+                <li
+                  key={p.name}
+                  className={
+                    `${p.min}-${p.max}` === `${min}-${max}` ? "active" : ""
+                  }
+                >
                   <Link
                     to={getFilterUrl({ min: p.min, max: p.max })}
                     className={
@@ -133,11 +138,14 @@ export default function SearchScreen(props) {
               ))}
             </ul>
           </div>
-          <div>
+          <div style={{ marginBottom: "6rem" }}>
             <h2>Avg. Customer Review</h2>
             <ul>
               {ratings.map((r) => (
-                <li key={r.name}>
+                <li
+                  key={r.name}
+                  className={`${r.rating}` === `${rating}` ? "active" : ""}
+                >
                   <Link
                     to={getFilterUrl({ rating: r.rating })}
                     className={`${r.rating}` === `${rating}` ? "active" : ""}
@@ -165,15 +173,17 @@ export default function SearchScreen(props) {
                 ))}
               </div>
               <div className="row justify-content-center pagination">
-                {[...Array(pages).keys()].map((x) => (
-                  <Link
-                    className={x + 1 === page ? "active" : ""}
-                    key={x + 1}
-                    to={getFilterUrl({ page: x + 1 })}
-                  >
-                    {x + 1}
-                  </Link>
-                ))}
+                {pages > 1
+                  ? [...Array(pages).keys()].map((x) => (
+                      <Link
+                        className={x + 1 === page ? "active" : ""}
+                        key={x + 1}
+                        to={getFilterUrl({ page: x + 1 })}
+                      >
+                        {x + 1}
+                      </Link>
+                    ))
+                  : ""}
               </div>
             </>
           )}

@@ -113,7 +113,7 @@ export default function ProductScreen(props) {
                     <>
                       <li>
                         <div className="d-flex justify-content-between pb-3">
-                          <div>Qty:</div>
+                          <div>Quantity:</div>
                           <div>
                             <select
                               value={qty}
@@ -162,7 +162,7 @@ export default function ProductScreen(props) {
                 {userInfo ? (
                   <div className="row">
                     <form
-                      className="form col-5 mx-auto"
+                      className="form col-sm-5 mx-auto"
                       onSubmit={submitHandler}
                     >
                       <div>
@@ -214,9 +214,11 @@ export default function ProductScreen(props) {
                     </form>
                   </div>
                 ) : (
-                  <MessageBox>
-                    Please <Link to="/signin">Sign In</Link> to write a review
-                  </MessageBox>
+                  <div style={{ marginBottom: "6rem" }}>
+                    <MessageBox>
+                      Please <Link to="/signin">Sign In</Link> to write a review
+                    </MessageBox>
+                  </div>
                 )}
               </li>
             </ul>

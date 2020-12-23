@@ -388,3 +388,6 @@ pre {
 .card-cart {
   background-color: lightyellow;
 }
+.search-panel li.active {
+  background-color: lightyellow;
+}

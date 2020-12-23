@@ -61,7 +61,7 @@ export default function OrderHistoryScreen(props) {
                   <td>
                     <button
                       type="button"
-                      className="btn btn-danger my-2"
+                      className="btn btn-info my-2"
                       onClick={() => {
                         props.history.push(`/order/${order._id}`);
                       }}
@@ -74,15 +74,17 @@ export default function OrderHistoryScreen(props) {
             </tbody>
           </table>
           <div className="row justify-content-center pagination">
-            {[...Array(pages).keys()].map((x) => (
-              <Link
-                className={x + 1 === page ? "active" : ""}
-                key={x + 1}
-                to={`/orderhistory/pageNumber/${x + 1}`}
-              >
-                {x + 1}
-              </Link>
-            ))}
+            {pages > 1
+              ? [...Array(pages).keys()].map((x) => (
+                  <Link
+                    className={x + 1 === page ? "active" : ""}
+                    key={x + 1}
+                    to={`/orderhistory/pageNumber/${x + 1}`}
+                  >
+                    {x + 1}
+                  </Link>
+                ))
+              : ""}
           </div>
         </>
       )}

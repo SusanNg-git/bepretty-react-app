@@ -65,10 +65,11 @@ export default function ProductListScreen(props) {
               <tr>
                 <th>Date Created</th>
                 <th>ID</th>
-                <th className="w-25">Name</th>
-                <th>Price</th>
-                <th>Category</th>
                 <th>Brand</th>
+                <th className="w-25">Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Count in Stock</th>
                 <th>Update Date</th>
                 <th>Actions</th>
               </tr>
@@ -78,10 +79,11 @@ export default function ProductListScreen(props) {
                 <tr key={product._id}>
                   <td>{product.createdAt.substring(0, 10)}</td>
                   <td>{product._id}</td>
-                  <td className="text-left w-70">{product.name}</td>
-                  <td>${product.price.toLocaleString()}</td>
-                  <td>{product.category}</td>
                   <td>{product.brand}</td>
+                  <td className="text-left w-70">{product.name}</td>
+                  <td>{product.category}</td>
+                  <td>${product.price.toLocaleString()}</td>
+                  <td>{product.countInStock}</td>
                   <td>{product.updatedAt.substring(0, 10)}</td>
                   <td>
                     <button
@@ -106,15 +108,17 @@ export default function ProductListScreen(props) {
             </tbody>
           </table>
           <div className="row justify-content-center pagination">
-            {[...Array(pages).keys()].map((x) => (
-              <Link
-                className={x + 1 === page ? "active" : ""}
-                key={x + 1}
-                to={`/productlist/pageNumber/${x + 1}`}
-              >
-                {x + 1}
-              </Link>
-            ))}
+            {pages > 1
+              ? [...Array(pages).keys()].map((x) => (
+                  <Link
+                    className={x + 1 === page ? "active" : ""}
+                    key={x + 1}
+                    to={`/productlist/pageNumber/${x + 1}`}
+                  >
+                    {x + 1}
+                  </Link>
+                ))
+              : ""}
           </div>
         </>
       )}

@@ -58,7 +58,7 @@ export default function OrderScreen(props) {
     <div className="mx-auto w-100">
       <h1>Order {order._id}</h1>
       <div className="row top">
-        <div className="col-9">
+        <div className="col-sm-9">
           <ul>
             <li>
               <div className="card card-body">
@@ -101,20 +101,20 @@ export default function OrderScreen(props) {
                   {order.orderItems.map((item) => (
                     <li key={item.product}>
                       <div className="row">
-                        <div className="col-2">
+                        <div className="col-sm-2">
                           <img
                             src={item.image}
                             alt={item.name}
                             className="small"
                           ></img>
                         </div>
-                        <div className="col-6">
+                        <div className="col-sm-6">
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
                         </div>
 
-                        <div className="col-4">
+                        <div className="col-sm-4">
                           {item.qty} x ${item.price.toLocaleString()} = $
                           {(item.qty * item.price).toLocaleString()}
                         </div>
@@ -126,8 +126,11 @@ export default function OrderScreen(props) {
             </li>
           </ul>
         </div>
-        <div className="col-3">
-          <div className="card card-body mt-3 px-3 form card-cart">
+        <div className="col-sm-3">
+          <div
+            className="card card-body mt-3 px-3 form card-cart"
+            style={{ marginBottom: "6rem" }}
+          >
             <ul>
               <li>
                 <h2>Order Summary</h2>

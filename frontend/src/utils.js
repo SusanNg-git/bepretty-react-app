@@ -39,5 +39,5 @@ export const ratings = [
   {
     name: "1stars & up",
     rating: 1,
-  },
+  }
 ];

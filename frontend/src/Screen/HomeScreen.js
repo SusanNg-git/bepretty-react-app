@@ -10,11 +10,9 @@ export default function HomeScreen() {
   const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  // const { loading, error, products } = productList;
   const { loading, error, products, page, pages } = productList;
 
   useEffect(() => {
-    // dispatch(listProducts({}));
     dispatch(listProducts({ pageNumber }));
   }, [dispatch, pageNumber]);
 

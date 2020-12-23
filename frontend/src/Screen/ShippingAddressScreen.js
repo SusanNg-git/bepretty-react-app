@@ -27,7 +27,7 @@ export default function ShippingAddressScreen(props) {
   return (
     <div className="mx-auto w-100">
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <form className="col-5 m-auto form" onSubmit={submitHandler}>
+      <form className="col-6 m-auto form" onSubmit={submitHandler}>
         <div>
           <h1>Shipping Address</h1>
         </div>

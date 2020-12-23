@@ -28,7 +28,7 @@ export default function CartScreen(props) {
 
   return (
     <div className="row m-auto w-100">
-      <div className="col-9">
+      <div className="col-sm-9">
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <MessageBox>
@@ -39,17 +39,17 @@ export default function CartScreen(props) {
             {cartItems.map((item) => (
               <li key={item.product}>
                 <div className="row fn">
-                  <div className="col-2">
+                  <div className="col-sm-2">
                     <img
                       src={item.image}
                       alt={item.name}
                       className="small"
                     ></img>
                   </div>
-                  <div className="col-6">
+                  <div className="col-sm-5">
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </div>
-                  <div className="col-1">
+                  <div className="col-sm-1">
                     <select
                       className="w-100"
                       value={item.qty}
@@ -66,10 +66,10 @@ export default function CartScreen(props) {
                       ))}
                     </select>
                   </div>
-                  <div className="col-2 text-center">
+                  <div className="col-sm-2 text-center">
                     ${item.price.toLocaleString()}
                   </div>
-                  <div className="col-1 form">
+                  <div className="col-sm-2 form">
                     <button
                       className="btn btn-danger"
                       type="button"
@@ -84,7 +84,7 @@ export default function CartScreen(props) {
           </ul>
         )}
       </div>
-      <div className="col-3">
+      <div className="col-sm-3">
         <div className="card card-body card-cart">
           <ul>
             <li>

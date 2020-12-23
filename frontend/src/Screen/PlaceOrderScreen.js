@@ -20,7 +20,7 @@ export default function PlaceOrderScreen(props) {
     cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
   );
   cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
-  cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
+  cart.taxPrice = toPrice(0.03 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
   const dispatch = useDispatch();
 
@@ -37,7 +37,7 @@ export default function PlaceOrderScreen(props) {
     <div className="mx-auto w-100">
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="row top">
-        <div className="col-9">
+        <div className="col-sm-9">
           <ul>
             <li>
               <div className="card card-body">
@@ -65,20 +65,20 @@ export default function PlaceOrderScreen(props) {
                   {cart.cartItems.map((item) => (
                     <li key={item.product}>
                       <div className="row">
-                        <div className="col-2">
+                        <div className="col-sm-2">
                           <img
                             src={item.image}
                             alt={item.name}
                             className="small"
                           ></img>
                         </div>
-                        <div className="col-6">
+                        <div className="col-sm-6">
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
                         </div>
 
-                        <div className="col-4">
+                        <div className="col-sm-4">
                           {item.qty} x ${item.price.toLocaleString()} = $
                           {(item.qty * item.price).toLocaleString()}
                         </div>
@@ -90,8 +90,11 @@ export default function PlaceOrderScreen(props) {
             </li>
           </ul>
         </div>
-        <div className="col-3 ">
-          <div className="card card-body mt-3 px-3 form card-cart">
+        <div className="col-sm-3 ">
+          <div
+            className="card card-body mt-3 px-3 form card-cart"
+            style={{ marginBottom: "6rem" }}
+          >
             <ul>
               <li>
                 <h2>Order Summary</h2>

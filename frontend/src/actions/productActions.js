@@ -40,8 +40,6 @@ export const listProducts = ({
     const { data } = await Axios.get(
       `/api/products?pageNumber=${pageNumber}&name=${name}&category=${category}&min=${min}&max=${max}&rating=${rating}&order=${order}`
     );
-    console.log(";k;;k---------------------------------------------");
-    console.log(data);
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
