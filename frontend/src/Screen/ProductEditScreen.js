@@ -88,7 +88,7 @@ export default function ProductEditScreen(props) {
     <div className="col-sm-10 col-md-7 m-auto">
       <form className="form mx-auto" onSubmit={submitHandler}>
         <div className="my-2">
-          <h1>Edit Product (ID): {productId}</h1>
+          <h1>Edit Product ID: {productId}</h1>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
