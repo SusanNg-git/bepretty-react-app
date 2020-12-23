@@ -4,11 +4,14 @@ export default function SearchBox(props) {
   const [name, setName] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
-    props.history.push(`/search/name/${name}`);
+    if (name == "") {
+      alert("Please enter value for searching.");
+    } else {
+      props.history.push(`/search/name/${name}`);
+    }
   };
   return (
-    <form className="search" onSubmit={submitHandler}>
-      {/* <div className="row"> */}
+    <form id="search" className="search" onSubmit={submitHandler}>
       <div>
         <input
           type="search"
