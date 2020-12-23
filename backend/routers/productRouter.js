@@ -171,6 +171,7 @@ productRouter.post(
           .send({ message: "You already submitted a review" });
       }
       const review = {
+        reviewerID: req.user._id,
         name: req.user.name,
         rating: Number(req.body.rating),
         comment: req.body.comment,
