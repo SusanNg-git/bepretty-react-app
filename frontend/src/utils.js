@@ -1,6 +1,6 @@
 export const prices = [
   {
-    name: "Any",
+    name: "All",
     min: 0,
     max: 0,
   },
@@ -39,5 +39,5 @@ export const ratings = [
   {
     name: "1stars & up",
     rating: 1,
-  }
+  },
 ];
