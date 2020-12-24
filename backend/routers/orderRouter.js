@@ -1,5 +1,6 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
+import Product from "../models/productModel.js";
 import Order from "../models/orderModel.js";
 import { isAuth } from "../utils.js";
 
@@ -40,6 +41,12 @@ orderRouter.post(
         totalPrice: req.body.totalPrice,
         user: req.user._id,
       });
+
+      for (const x of req.body.orderItems) {
+        const product = await Product.findById(x.product);
+        product.countInStock -= x.qty;
+        const updatedProduct = await product.save();
+      }
       const createdOrder = await order.save();
       res
         .status(201)
