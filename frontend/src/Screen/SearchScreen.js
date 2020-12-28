@@ -53,7 +53,7 @@ export default function SearchScreen(props) {
     const filterPage = filter.page || pageNumber;
     const filterCategory = filter.category || category;
     const filterName = filter.name || name;
-    const filterRating = filter.rating || rating;
+    const filterRating = filter.rating >= 0 ? filter.rating : rating;
     const sortOrder = filter.order || order;
     const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
     const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
@@ -169,7 +169,9 @@ export default function SearchScreen(props) {
               )}
               <div className="row justify-content-center">
                 {products.map((product) => (
-                  <Product key={product._id} product={product}></Product>
+                  <div>
+                    <Product key={product._id} product={product}></Product>
+                  </div>
                 ))}
               </div>
               <div className="row justify-content-center pagination">
